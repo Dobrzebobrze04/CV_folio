@@ -1,0 +1,18 @@
+---
+import { siteConfig } from '../config/site.config';
+---
+<pre class="ascii-art">
+{siteConfig.asciiArt}
+</pre>
+
+<style>
+  .ascii-art {
+    color: var(--accent-green);
+    white-space: pre;
+    font-size: 7px;
+    line-height: 1.1;
+  }
+  @media (min-width: 768px) {
+    .ascii-art { font-size: 10.45px; }
+  }
+</style>
