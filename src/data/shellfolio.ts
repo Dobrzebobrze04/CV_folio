@@ -84,20 +84,20 @@ export const paymentMethods = [
 export const data: PortfolioData = {
   en: {
     profile: {
-      Name: "John Doe",
-      Online: "john",
-      Uptime: "25 years",
-      Location: "Earth",
-      Role: "Sysadmin & Developer",
+      Name: "Ashurov Bobur",
+      Online: "Dobrzebobrze",
+      Uptime: "26 years",
+      Location: "Earth,Tashkent-Uzbekistan",
+      Role: "IT Specialist",
       Status: "Open to work",
       OS: "Arch Linux x86_64",
       Host: "ThinkPad T14",
-      Kernel: "Linux 6.6",
-      Shell: "zsh",
-      WM: "Hyprland",
-      about: `Hello, World! I am a software engineer and open-source enthusiast.\nI specialize in building minimal, fast, and secure tools for the modern web.`
+      Kernel: "Linux 7.2.4",
+      Shell: "kitty",
+      WM: "Sway",
+      about: "Hello, World! I'm an IT student based in Tashkent, at School 21.\nI like understanding how systems work end-to-end — from requirements to working code."
     },
-    experiences: [
+    experiences:
       {
         perms: "drwxr-xr-x",
         date: "2023-Pres",
