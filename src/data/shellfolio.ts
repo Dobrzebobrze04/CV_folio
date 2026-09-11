@@ -97,7 +97,7 @@ export const data: PortfolioData = {
       WM: "Sway",
       about: "Hello, World! I'm an IT student based in Tashkent, at School 21.\nI like understanding how systems work end-to-end — from requirements to working code."
     },
-    experiences:
+    experiences: [
       {
         perms: "drwxr-xr-x",
         date: "2023-Pres",
