@@ -8,7 +8,7 @@ export const siteConfig = {
   siteUrl: "https://dobrzebobrze04.github.io/CV_folio", // Used for OpenGraph
   metaImage: "/og-image.png", // Placed in public/ directory
 
-  themeColor: "#ffb86c",
+  themeColor: "#4af626",
 
   // Custom Prompt
   prompt: {
