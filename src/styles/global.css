@@ -1,0 +1,190 @@
+/* src/styles/global.css */
+
+:root {
+  /* TTY Aesthetic: Absolute black and high contrast */
+  --bg-crust: #000000;
+  --bg-base: #000000;
+  --text-main: #e5e5e5;
+  --text-muted: #888888;
+  --accent-green: #4af626; /* Classic phosphor terminal green */
+  --accent-amber: #ffb86c;
+
+  /* JetBrains Mono everywhere (both languages) so en/ru render with
+     identical size and weight — VGA/Terminus (Latin-only bitmap fonts)
+     made the two languages look like different visual systems. */
+  --font-tui: 'JetBrains Mono', 'Courier New', monospace;
+  --font-prose: 'JetBrains Mono', 'Courier New', monospace;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-main);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-prose);
+}
+
+/* --- Boot Loader Control (Elegant fade out) --- */
+#boot-loader {
+  opacity: 1;
+  transition: opacity 250ms ease, visibility 250ms ease;
+}
+
+html.skip-loader #boot-loader,
+html.boot-complete #boot-loader {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* --- TTY Accessibility --- */
+
+:focus-visible {
+  outline: none;
+  background-color: var(--accent-green);
+  color: var(--bg-crust);
+}
+
+.tui-details summary:focus-visible {
+  background-color: var(--text-muted);
+  color: var(--bg-base);
+  outline: 2px solid var(--accent-green);
+  outline-offset: 2px;
+}
+
+.hover-link:focus-visible {
+  background-color: var(--accent-amber);
+  color: var(--bg-crust);
+  text-decoration: none;
+}
+
+/* Motion Sensitivity Protection */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =========================================
+   TUI COMPONENTS (Terminal Aesthetics)
+   ========================================= */
+
+.container { width: 100%; padding: 1rem 8px; }
+
+.final-prompt .prompt-line {
+  margin-bottom: 0 !important;
+}
+
+.prose {
+  font-family: var(--font-prose);
+  color: var(--text-muted);
+  font-size: 1.15rem;
+  line-height: 1.6;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.tui-list {
+  font-family: var(--font-tui);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  font-size: 0.85rem;
+}
+
+.prose-list {
+  font-family: var(--font-prose);
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+
+.list-item {
+  display: flex;
+  gap: 1.5rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.tui-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.tui-details summary {
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+  transition: opacity 0.2s;
+  width: fit-content;
+}
+
+.tui-details summary:hover {
+  opacity: 0.8;
+}
+
+.indicator {
+  font-family: var(--font-tui);
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+.indicator::before {
+  content: '[+]';
+  color: var(--text-muted);
+  margin-right: 0.5rem;
+}
+
+.tui-details[open] .indicator::before {
+  content: '[-]';
+  color: var(--text-main);
+}
+
+.expanded-content {
+  padding-left: 3rem;
+  margin-top: 0.8rem;
+  margin-bottom: 1.5rem;
+  border-left: 1px dashed var(--text-muted);
+  margin-left: 1rem;
+}
+
+.hover-link { text-decoration: none; }
+.hover-link:hover { text-decoration: underline; color: var(--accent-amber); }
+
+.perms { color: var(--text-main); }
+.folder { color: var(--accent-green); font-weight: bold; }
+
+.file {
+  color: var(--text-main);
+  font-family: var(--font-tui);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 600px) {
+  .list-item { gap: 0.8rem; font-size: 0.9rem; }
+}
+
+.tui-grid {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: 4rem; /* Fixed gap between the label column and value */
+  row-gap: 0.8rem;
+  align-items: baseline; /* Aligns text by font baseline, regardless of size */
+  justify-items: start;
+}
+
+.tui-grid-sub {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
+}

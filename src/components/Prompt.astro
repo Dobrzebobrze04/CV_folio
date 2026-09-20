@@ -1,0 +1,43 @@
+---
+import { siteConfig } from '../config/site.config';
+
+const { cmd, showCursor } = Astro.props;
+---
+<div class="prompt-line"><span class="prompt-text">{siteConfig.prompt.user}@{siteConfig.prompt.host}:~$</span> {cmd && <span class="cmd-text">{cmd}</span>}{showCursor && <span class="cursor"></span>}</div>
+
+<style>
+  .prompt-line {
+    font-family: var(--font-tui);
+    font-size: 0.9rem;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .prompt-text {
+    color: #ffffff;
+    font-weight: bold;
+  }
+
+  .cmd-text {
+    color: #ffffff;
+  }
+</style>
+
+<style is:global>
+  /* The is:global cursor ensures the animation is not optimized away and discarded */
+  .cursor {
+    display: inline-block;
+    width: 10px;
+    height: 1.6em;
+    background-color: var(--text-main);
+    animation: blink 1s step-end infinite;
+    vertical-align: text-bottom;
+    margin-left: 0.4rem;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+</style>

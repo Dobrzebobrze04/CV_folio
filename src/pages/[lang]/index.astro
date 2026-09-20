@@ -1,0 +1,69 @@
+---
+// src/pages/[lang]/index.astro
+import Layout from '../../layouts/Layout.astro';
+import BootLoader from '../../components/BootLoader.astro';
+import FastfetchHero from '../../components/FastfetchHero.astro';
+import Prompt from '../../components/Prompt.astro';
+import { siteConfig } from '../../config/site.config';
+
+// IMPORTANT: Index must be the ONLY file importing raw data!
+import { data, contactLinks, paymentMethods } from '../../data/shellfolio';
+
+import AboutSection from '../../components/sections/AboutSection.astro';
+import ExperiencesSection from '../../components/sections/ExperiencesSection.astro';
+import ProjectsSection from '../../components/sections/ProjectsSection.astro';
+import EducationSection from '../../components/sections/EducationSection.astro';
+import SkillsSection from '../../components/sections/SkillsSection.astro';
+import RemotesSection from '../../components/sections/RemotesSection.astro';
+import ContactSection from '../../components/sections/ContactSection.astro';
+import WalletsSection from '../../components/sections/WalletsSection.astro';
+import LocaleSection from '../../components/sections/LocaleSection.astro';
+import TorSection from '../../components/sections/TorSection.astro';
+
+export function getStaticPaths() {
+  return siteConfig.features.translations
+    ? [{ params: { lang: 'en' } }, { params: { lang: 'ru' } }]
+    : [{ params: { lang: 'en' } }];
+}
+
+const { lang } = Astro.params;
+const t = data[lang as keyof typeof data];
+
+// Safely redirects if an invalid language is forced in the URL
+if (!t) {
+  return Astro.redirect('/en');
+}
+---
+<Layout title={siteConfig.title} lang={lang}>
+  <BootLoader t={t} />
+  <main class="container">
+
+    {siteConfig.features.fastfetch && <FastfetchHero profile={t.profile} />}
+
+    {siteConfig.features.about && <AboutSection about={t.profile.about} />}
+
+    {siteConfig.features.experiences && <ExperiencesSection experiences={t.experiences} />}
+
+    {siteConfig.features.projects && <ProjectsSection projects={t.projects} repoLinkText={t.ui.repoLink} />}
+
+    {siteConfig.features.education && <EducationSection education={t.education} />}
+
+    {siteConfig.features.skills && <SkillsSection skills={t.skills} />}
+
+    {siteConfig.features.remotes && <RemotesSection remotes={t.remotes} />}
+
+    {/* Passing static data as props, respecting the architecture */}
+    {siteConfig.features.contact && <ContactSection contacts={contactLinks} />}
+
+    {siteConfig.features.wallets && <WalletsSection wallets={paymentMethods} />}
+
+    {siteConfig.features.translations && <LocaleSection lang={lang} t={t} />}
+
+    {siteConfig.features.torMirror && <TorSection />}
+
+    <div class="final-prompt" style="margin-top: 2rem;">
+       <Prompt showCursor={true} />
+    </div>
+
+  </main>
+</Layout>

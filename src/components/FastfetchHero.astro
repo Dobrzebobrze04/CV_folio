@@ -1,0 +1,137 @@
+---
+import AsciiFace from './AsciiFace.astro';
+import { siteConfig } from '../config/site.config';
+
+const { profile } = Astro.props;
+---
+<section class="fastfetch-wrapper">
+  <div class="first-prompt"><span class="prompt-text">{siteConfig.prompt.user}@{siteConfig.prompt.host}:~$</span> fastfetch</div>
+  <div class="fastfetch-container">
+    <div class="ascii-column">
+      <AsciiFace />
+    </div>
+    <div class="info-column">
+      <h1><span class="user">{siteConfig.prompt.user}</span><span class="at">@</span><span class="host">{siteConfig.prompt.host}</span></h1>
+      <div class="separator">--------------</div>
+      <p><span class="label">Name:</span> {profile.Name}</p>
+      <p><span class="label">Online as:</span> {profile.Online}</p>
+      <p><span class="label">Uptime:</span> {profile.Uptime}</p>
+      <p><span class="label">Location:</span> {profile.Location}</p>
+      <p><span class="label">Role:</span> {profile.Role}</p>
+      <p><span class="label">Status:</span> {profile.Status}</p>
+      <p><span class="label">OS:</span> {profile.OS}</p>
+      <p><span class="label">Host:</span> {profile.Host}</p>
+      <p><span class="label">Kernel:</span> {profile.Kernel}</p>
+      <p><span class="label">Shell:</span> {profile.Shell}</p>
+      <p><span class="label">WM:</span> {profile.WM}</p>
+
+      <div class="color-palette">
+        <div class="color-row">
+          <span class="c0"></span><span class="c1"></span><span class="c2"></span><span class="c3"></span><span class="c4"></span><span class="c5"></span><span class="c6"></span><span class="c7"></span>
+        </div>
+        <div class="color-row">
+          <span class="c8"></span><span class="c9"></span><span class="c10"></span><span class="c11"></span><span class="c12"></span><span class="c13"></span><span class="c14"></span><span class="c15"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .fastfetch-wrapper {
+    margin-bottom: 2rem;
+  }
+  .first-prompt {
+    font-family: var(--font-tui);
+    color: #ffffff;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .prompt-text { font-weight: bold; }
+
+  .fastfetch-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    font-family: var(--font-tui);
+  }
+  @media (min-width: 768px) {
+    .fastfetch-container {
+      grid-template-columns: auto 1fr;
+      align-items: start;
+    }
+  }
+
+  .ascii-column {
+    overflow-x: auto;
+  }
+
+  .info-column h1 {
+    margin: 0 0 0.5rem 0;
+    line-height: 1.4;
+  }
+
+  .user, .host {
+    color: var(--accent-green);
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+
+  .at {
+    color: var(--text-main);
+    font-size: 0.9rem;
+  }
+
+  .separator {
+    color: var(--text-muted);
+    margin: 0.5rem 0;
+  }
+
+  .label {
+    color: var(--accent-green);
+    font-weight: bold;
+  }
+
+  p {
+    margin: 0.4rem 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  /* --- Terminal Color Palette (ANSI 0-15 Pure) --- */
+  .color-palette {
+    margin-top: 1.2rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .color-row {
+    display: flex;
+    gap: 0;
+  }
+  .color-row span {
+    /* Dimensions that closely mimic blocks rendered by fastfetch (approx. 3 chars) */
+    width: 45px;
+    height: 30px;
+    display: inline-block;
+  }
+
+  .c0 { background: #000000; }
+  .c1 { background: #CC0000; }
+  .c2 { background: #00CC00; }
+  .c3 { background: #CCCC00; }
+  .c4 { background: #0000CC; }
+  .c5 { background: #CC00CC; }
+  .c6 { background: #00CCCC; }
+  .c7 { background: #CCCCCC; }
+
+  .c8 { background: #767676; }
+  .c9 { background: #FF0000; }
+  .c10 { background: #00FF00; }
+  .c11 { background: #FFFF00; }
+  .c12 { background: #0000FF; }
+  .c13 { background: #FF00FF; }
+  .c14 { background: #00FFFF; }
+  .c15 { background: #FFFFFF; }
+</style>

@@ -1,0 +1,18 @@
+repos:
+  # Basic Hygiene
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-added-large-files
+      - id: check-merge-conflict
+      - id: detect-private-key
+
+  # Secret Security (Gitleaks)
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.30.0
+    hooks:
+      - id: gitleaks
+        # --redact: Reports finding a secret without printing its value to the terminal (safe for logs)
+        args: ["--redact", "--exit-code", "1"]

@@ -1,0 +1,37 @@
+---
+import '../styles/global.css';
+import { siteConfig } from '../config/site.config';
+
+const { title, lang = 'en' } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang={lang} style={`--accent-green: ${siteConfig.themeColor};`}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}/favicon.svg`.replace(/\/+/g, '/')} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title || siteConfig.title}</title>
+    <meta name="description" content={siteConfig.description} />
+    <meta name="author" content={siteConfig.author} />
+    <meta name="theme-color" content="#000000" />
+
+    <meta property="og:title" content={title || siteConfig.title} />
+    <meta property="og:description" content={siteConfig.description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={siteConfig.siteUrl} />
+    <meta property="og:image" content={siteConfig.metaImage} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title || siteConfig.title} />
+    <meta name="twitter:description" content={siteConfig.description} />
+    <meta name="twitter:image" content={siteConfig.metaImage} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

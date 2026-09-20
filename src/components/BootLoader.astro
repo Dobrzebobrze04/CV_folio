@@ -1,0 +1,71 @@
+---
+import type { Experience, Education, Project } from '../data/shellfolio';
+
+const { t } = Astro.props;
+
+// Generates boot log lines from dynamic portfolio data (experiences, education, projects)
+const logs = [
+  { verb: "Mounting", rest: "file systems..." },
+  { verb: "Initializing", rest: "cv-folio daemon..." },
+  ...(t.experiences || []).map((exp: Experience) => ({ verb: "Loading", rest: `${exp.company} experience...` })),
+  ...(t.education || []).map((edu: Education) => ({ verb: "Loading", rest: `education ${edu.institution}...` })),
+  ...(t.projects || []).map((proj: Project) => ({ verb: "Initializing", rest: `project: ${proj.file}...` })),
+  { verb: "Reached", rest: "target Graphical Interface." }
+];
+---
+<div id="boot-loader" class="fixed-fullscreen">
+  <div class="tui-text">
+    {logs.map((log, index) => (
+      <div class="log-line" style={`animation-delay: ${(index * 0.15 + 0.1).toFixed(2)}s;`}><span class="bracket">[</span>{'  '}<span class="ok">OK</span>{'  '}<span class="bracket">]</span>{' '}<span class="verb">{log.verb}</span>{' '}<span class="rest">{log.rest}</span></div>
+    ))}
+  </div>
+</div>
+
+<script is:inline>
+  if (typeof window !== 'undefined') {
+    if (sessionStorage.getItem('cvFolioBooted')) {
+      document.documentElement.classList.add('skip-loader');
+    } else {
+      sessionStorage.setItem('cvFolioBooted', 'true');
+
+      const lastLogLine = document.querySelector('.log-line:last-child');
+
+      if (lastLogLine) {
+        lastLogLine.addEventListener('animationend', () => {
+          setTimeout(() => {
+            document.documentElement.classList.add('boot-complete');
+          }, 400);
+        });
+      } else {
+        setTimeout(() => document.documentElement.classList.add('boot-complete'), 2000);
+      }
+    }
+  }
+</script>
+
+<style>
+  .fixed-fullscreen {
+    position: fixed; inset: 0; background: var(--bg-crust); z-index: 9999;
+    padding: 4px 8px;
+  }
+
+  .tui-text { font-family: var(--font-tui); }
+
+  /* Exact BootLoader color palette */
+  .bracket { color: var(--text-main); font-weight: bold; }
+  .ok { color: var(--accent-green); font-weight: bold; }
+  .verb { color: var(--text-muted); }
+  .rest { color: var(--text-main); }
+
+  .log-line {
+    opacity: 0;
+    animation: popIn 0.1s step-end forwards;
+    margin-bottom: 0.3rem;
+    line-height: 1.5;
+    white-space: nowrap;
+  }
+
+  @keyframes popIn {
+    to { opacity: 1; }
+  }
+</style>
