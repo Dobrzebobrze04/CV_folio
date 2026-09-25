@@ -103,11 +103,19 @@ export const data: PortfolioData = {
       }
     ],
     projects: [
-      {
-        perms: "drwxr-xr-x", file: "cv-folio", link: "https://github.com/Dobrzebobrze04/CV_folio",
-        content: `My personal terminal-style portfolio/CV site, built with Astro.js.`
-      }
-    ],
+  {
+    perms: "drwxr-xr-x", file: "cv-folio", link: "https://github.com/Dobrzebobrze04/CV_folio",
+    content: `My personal terminal-style portfolio/CV site, built with Astro.js.`
+  },
+  {
+    perms: "drwxr-xr-x", file: "pet-home", link: "https://pet-home.uz",
+    content: `Stray animal adoption listings board for Tashkent. Frontend on GitHub Pages, Supabase backend.`
+  },
+  {
+    perms: "drwxr-xr-x", file: "launchlab21", link: "https://github.com/dobrzebobrze04/launchlab21",
+    content: `Incubator-platform prototype: guides a founder through CustDev, MVP and monetization model, auto-assembles a one-pager.`
+  }
+],
     education: [
       {
         perms: "drwxr-xr-x", date: "2014-2017", institution: "IT Professional College", folder: "Information Technology",
@@ -140,7 +148,7 @@ export const data: PortfolioData = {
       Kernel: "Linux 7.2.4",
       Shell: "kitty",
       WM: "Sway",
-      about: "Привет, я Бобур — самоучка-разработчик из Ташкента, Узбекистан.\nЛюблю собирать свои проекты и разбираться, как всё устроено изнутри."
+      about: "Бобур — самоучка-разработчик из Ташкента, Узбекистан.\n."
     },
     experiences: [
       {
@@ -151,10 +159,18 @@ export const data: PortfolioData = {
         content: `Формального опыта работы пока нет.\n- Довожу свои проекты до конца.\n- Берусь за фриланс/аутсорс задачи, чтобы применять знания на практике.`
       }
     ],
-    projects: [
+        projects: [
       {
         perms: "drwxr-xr-x", file: "cv-folio", link: "https://github.com/Dobrzebobrze04/CV_folio",
         content: `Мой личный сайт-резюме в стиле терминала, сделан на Astro.js.`
+      },
+      {
+        perms: "drwxr-xr-x", file: "pet-home", link: "https://pet-home.uz",
+        content: `Доска объявлений для пристройства бездомных животных в Ташкенте. Фронтенд на GitHub Pages, бэкенд на Supabase.`
+      },
+      {
+        perms: "drwxr-xr-x", file: "launchlab21", link: "https://github.com/dobrzebobrze04/launchlab21",
+        content: `Прототип инкубатор-платформы: проводит основателя через CustDev, MVP и модель монетизации, автоматически собирает one-pager.`
       }
     ],
     education: [
