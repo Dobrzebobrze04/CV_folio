@@ -91,7 +91,7 @@ export const data: PortfolioData = {
       Kernel: "Linux 7.2.4",
       Shell: "kitty",
       WM: "Sway",
-      about: "Hi, I'm Bobur — a self-taught developer from Tashkent, Uzbekistan.\nI enjoy building my own projects and figuring out how things work under the hood."
+      about: "Hi, I'm Bobur — a self-taught IT-specialist from Tashkent, Uzbekistan.\nI enjoy building my own projects and figuring out how things work under the hood."
     },
     experiences: [
       {
@@ -99,20 +99,17 @@ export const data: PortfolioData = {
         date: "Present",
         company: "Freelance / Outsource",
         folder: "Self-taught Developer",
-        content: `No formal work experience yet.\n- I build and ship personal projects end-to-end.\n- I take on freelance/outsource tasks to apply what I learn in practice.`
+        content: `my projects.\n- I build and ship personal projects end-to-end.\n- I take on freelance/outsource tasks to apply what I learn in practice.`
       }
     ],
     projects: [
-  {
-    perms: "drwxr-xr-x", file: "cv-folio", link: "https://github.com/Dobrzebobrze04/CV_folio",
-    content: `My personal terminal-style portfolio/CV site, built with Astro.js.`
-  },
+ 
   {
     perms: "drwxr-xr-x", file: "pet-home", link: "https://pet-home.uz",
     content: `Stray animal adoption listings board for Tashkent. Frontend on GitHub Pages, Supabase backend.`
   },
   {
-    perms: "drwxr-xr-x", file: "launchlab21", link: "https://github.com/dobrzebobrze04/launchlab21",
+    perms: "drwxr-xr-x", file: "launchlab21", link: "https://dobrzebobrze04.github.io/launchlab21/",
     content: `Incubator-platform prototype: guides a founder through CustDev, MVP and monetization model, auto-assembles a one-pager.`
   }
 ],
@@ -123,8 +120,8 @@ export const data: PortfolioData = {
       }
     ],
     skills: [
-      { category: "Languages", items: "Python, JavaScript, TypeScript" },
-      { category: "Tools", items: "Git, Linux" }
+      { category: "Languages", items: "Python, JavaScript, Bash" },
+      { category: "Tools", items: "Git, Linux, AI-tools" }
     ],
     remotes: [
       { name: "github", url: "git@github.com:Dobrzebobrze04/CV_folio.git", webLink: "https://github.com/Dobrzebobrze04" }
@@ -148,7 +145,7 @@ export const data: PortfolioData = {
       Kernel: "Linux 7.2.4",
       Shell: "kitty",
       WM: "Sway",
-      about: "Бобур — самоучка-разработчик из Ташкента, Узбекистан.\n."
+      about: "Бобур — самоучка-IT специалист из Ташкента, Узбекистан.\n."
     },
     experiences: [
       {
@@ -156,20 +153,17 @@ export const data: PortfolioData = {
         date: "По настоящее время",
         company: "Фриланс / Аутсорс",
         folder: "Самоучка-разработчик",
-        content: `Формального опыта работы пока нет.\n- Довожу свои проекты до конца.\n- Берусь за фриланс/аутсорс задачи, чтобы применять знания на практике.`
+        content: `Свои проекты.\n- Довожу свои проекты до конца.\n- Берусь за фриланс/аутсорс задачи, чтобы применять знания на практике.`
       }
     ],
         projects: [
-      {
-        perms: "drwxr-xr-x", file: "cv-folio", link: "https://github.com/Dobrzebobrze04/CV_folio",
-        content: `Мой личный сайт-резюме в стиле терминала, сделан на Astro.js.`
-      },
+      
       {
         perms: "drwxr-xr-x", file: "pet-home", link: "https://pet-home.uz",
         content: `Доска объявлений для пристройства бездомных животных в Ташкенте. Фронтенд на GitHub Pages, бэкенд на Supabase.`
       },
       {
-        perms: "drwxr-xr-x", file: "launchlab21", link: "https://github.com/dobrzebobrze04/launchlab21",
+        perms: "drwxr-xr-x", file: "launchlab21", link: "https://dobrzebobrze04.github.io/launchlab21/",
         content: `Прототип инкубатор-платформы: проводит основателя через CustDev, MVP и модель монетизации, автоматически собирает one-pager.`
       }
     ],
@@ -180,8 +174,8 @@ export const data: PortfolioData = {
       }
     ],
     skills: [
-      { category: "Языки", items: "Python, JavaScript, TypeScript" },
-      { category: "Инструменты", items: "Git, Linux" }
+      { category: "Языки", items: "Python, JavaScript, Bash" },
+      { category: "Инструменты", items: "Git, Linux, AI-tools" }
     ],
     remotes: [
       { name: "github", url: "git@github.com:Dobrzebobrze04/CV_folio.git", webLink: "https://github.com/Dobrzebobrze04" }
